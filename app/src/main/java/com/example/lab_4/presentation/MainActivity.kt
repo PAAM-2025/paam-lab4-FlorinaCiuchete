@@ -30,7 +30,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.lab_4.domain.Chiuit
-import com.example.lab_4.presentation.HomeViewModel
 import com.example.lab_4.R
 import com.example.lab_4.data.database.ChiuitDbStore
 import com.example.lab_4.data.database.RoomDatabase
@@ -140,6 +139,12 @@ class MainActivity : ComponentActivity() {
     private fun setChiuitText(resultText: String?) {
         if(resultText !== null) {
             // TODO 1: Instantiate a new chiuit object then delegate the addition to the [viewModel].
+            val newChiuit = Chiuit(
+                description = resultText,
+                timestamp = System.currentTimeMillis()
+            )
+            viewModel.addChiuit(newChiuit)
+
         }
     }
 
