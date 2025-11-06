@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.Button
@@ -104,6 +105,17 @@ class MainActivity : ComponentActivity() {
                 }
             }
             // TODO 4: Add a new button that has the purpose to delete a chiuit.
+            Button(
+                modifier = Modifier
+                    .weight(0.2f)
+                    .padding(4.dp), // Am redus puțin padding-ul
+                onClick = { viewModel.removeChiuit(chiuit) } // Apelăm noua funcție de ștergere
+            ) {
+                Icon(
+                    Icons.Filled.Delete, // Folosim iconița de "Delete"
+                    contentDescription = stringResource(R.string.delete_action_icon_content_description)
+                )
+            }
         }
     }
 

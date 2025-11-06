@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.layout.add
 import com.example.lab_4.domain.Chiuit
 import com.example.lab_4.domain.ChiuitRepository
+import kotlin.collections.remove
 
 class ChiuitDbStore(private val appDatabase: AppDatabase) : ChiuitRepository {
 
@@ -23,6 +24,11 @@ class ChiuitDbStore(private val appDatabase: AppDatabase) : ChiuitRepository {
 
     override fun removeChiuit(chiuit: Chiuit) {
         // TODO 5: Remove the chiuit by invoking the DAO; make sure to use the designated mapper.
+        // 1. Converteste obiectul 'Chiuit' (domain) la 'ChiuitEntity' (database) folosind mapper-ul.
+        val chiuitEntity = chiuit.toDbModel()
+
+        // 2. Apelează DAO-ul pentru a șterge entitatea din baza de date.
+        appDatabase.chiuitDao().remove(chiuitEntity)
     }
 
 
